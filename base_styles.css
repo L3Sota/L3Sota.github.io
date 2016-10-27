@@ -1,0 +1,18 @@
+p {
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+
+text {
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+
+noscript {
+    display: none;
+}
+
+#footer {
+    background-color: whitesmoke;
+    font-size: 10pt;
+    padding: 5px 5px 5px 5px;
+    text-align: right;
+}
