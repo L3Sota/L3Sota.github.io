@@ -1,0 +1,24 @@
+{
+  "name": "l3sota.github.io",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {},
+  "dependencies": {},
+  "description": "My website!",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/L3Sota/L3Sota.github.io.git"
+  },
+  "keywords": [
+    "L3Sota"
+  ],
+  "author": "Sotaro Sugimoto",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/L3Sota/L3Sota.github.io/issues"
+  },
+  "homepage": "https://github.com/L3Sota/L3Sota.github.io#readme",
+  "devDependencies": {
+    "@11ty/eleventy": "^0.10.0"
+  }
+}
