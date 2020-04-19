@@ -21,11 +21,15 @@ jobs:
         env:
           github_token_secret: ${{ secrets.GITHUB_TOKEN }}
         run: |
+          mkdir -p ~/.config/git
+          cat .gitignore >> ~/.config/git/ignore
+          git config --global --add core.excludesFile ~/.config/git/ignore
+          git config --global --add user.name 'L3Sota'
+          git config --global --add user.email 'l3sota@protonmail.com'
           git fetch --no-tags --prune --depth=1 origin master
           git checkout -b master -t origin/master
           mv -f _site/* ./
           rmdir _site
-          git config --global --add user.name 'L3Sota'
-          git config --global --add user.email 'l3sota@protonmail.com'
+          git add '**.html' '**.css' '**.js'
           git commit -a -m 'Host site from merge ${{ github.head_ref }} → ${{ github.base_ref }}'
           git push origin HEAD
