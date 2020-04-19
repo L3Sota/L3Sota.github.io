@@ -16,10 +16,15 @@ jobs:
           npm ci
           npx @11ty/eleventy
       - name: commit to master, push to origin
+        env:
+          github_token_secret: ${{ secrets.GITHUB_TOKEN }}
         run: |
           git fetch --no-tags --prune --depth=1 origin master
           git checkout -b master -t origin/master
           mv -f _site/* ./
           rmdir _site
+          git remote add origin "https://x-access-token:${github_token_secret}@github.com/${{ github.repository }}.git" 2>&1 >/dev/null
+          git config --global --set user.name 'L3Sota'
+          git config --global --set user.email 'l3sota@protonmail.com'
           git commit -a -m 'Host site from merge ${{ github.head_ref }} → ${{ github.base_ref }}'
           git push origin HEAD
