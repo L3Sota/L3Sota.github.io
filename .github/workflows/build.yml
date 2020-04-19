@@ -1,0 +1,29 @@
+name: Build and Host
+on:
+  pull_request:
+    branches: [develop]
+    types: [closed]
+    paths:
+      - '**.html'
+      - '**.css'
+      - '**.js'
+      - '**.hbs'
+
+jobs:
+  build_and_host:
+    runs-on: ubuntu-latest
+    name: Build site and push to master for hosting on Github Pages
+    timeout-minutes: 5
+    steps:
+      - uses: actions/setup-node@v1
+        with:
+          node-version: 12.x
+      - uses: actions/checkout@v2
+      - run: |
+          npm ci
+          npx @11ty/eleventy
+          git checkout master
+          mv -f _site/* ./
+          rmdir _site
+          git commit -a -m 'Host merge ${{ github.head_ref }} → ${{ github.base_ref }}'
+          git push origin HEAD
