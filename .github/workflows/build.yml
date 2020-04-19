@@ -25,7 +25,7 @@ jobs:
         run: |
           npm ci
           npx @11ty/eleventy
-      - name: Commit to master, push to origin
+      - name: Checkout master
         run: |
           mkdir -p ~/.config/git
           cat .gitignore >> ~/.config/git/ignore
@@ -34,7 +34,15 @@ jobs:
           git config --global --add user.email 'l3sota@protonmail.com'
           git fetch --no-tags --prune --depth=1 origin master
           git checkout -b master -t origin/master
-          git rm -r . || (mv -f _site/* ./ && rmdir _site)
-          git add .
-          git commit -m 'Host site from merge ${{ github.head_ref }} → ${{ github.base_ref }}'
-          git push origin HEAD:origin/master
+      - name: Remove existing site (can fail if repo is empty)
+        continue-on-error: true
+        run: git rm -r .
+      - name: Move newly built site to top level
+        run: mv -f _site/* ./ && rmdir _site
+      - name: Commit changes (can fail if no changes)
+        id: commit
+        continue-on-error: true
+        run: git add . && git commit -m 'Host site from merge ${{ github.head_ref }} → ${{ github.base_ref }}'
+      - name: Push to origin if commit succeeded
+        if: steps.commit.outcome == 'success'
+        run: git push origin HEAD:origin/master
