@@ -18,8 +18,6 @@ jobs:
           npm ci
           npx @11ty/eleventy
       - name: Commit to master, push to origin
-        env:
-          github_token_secret: ${{ secrets.GITHUB_TOKEN }}
         run: |
           mkdir -p ~/.config/git
           cat .gitignore >> ~/.config/git/ignore
