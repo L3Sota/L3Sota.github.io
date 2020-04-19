@@ -19,11 +19,15 @@ jobs:
         with:
           node-version: 12.x
       - uses: actions/checkout@v2
-      - run: |
+      - name: install, build
+        run: |
           npm ci
           npx @11ty/eleventy
-          git checkout master
+      - name: commit to master, push to origin
+        run: |
+          git fetch --no-tags --prune --depth=1 origin master
+          git checkout -b master -t origin/master
           mv -f _site/* ./
           rmdir _site
-          git commit -a -m 'Host merge ${{ github.head_ref }} → ${{ github.base_ref }}'
+          git commit -a -m 'Host site from merge ${{ github.head_ref }} → ${{ github.base_ref }}'
           git push origin HEAD
