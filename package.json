@@ -19,6 +19,7 @@
   },
   "homepage": "https://github.com/L3Sota/L3Sota.github.io#readme",
   "devDependencies": {
-    "@11ty/eleventy": "^0.10.0"
+    "@11ty/eleventy": "^0.10.0",
+    "acorn": ">=5.7.4"
   }
 }
