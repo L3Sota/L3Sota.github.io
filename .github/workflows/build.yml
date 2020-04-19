@@ -25,10 +25,8 @@ jobs:
           git config --global --add user.name 'L3Sota'
           git config --global --add user.email 'l3sota@protonmail.com'
           git fetch --no-tags --prune --depth=1 origin master
-          git checkout -b master -t origin/master
-          git rm -rf .
-          mv -f _site/* ./
-          rmdir _site
+          git checkout -b master -t origin/test/master
+          git rm -r . || (mv -f _site/* ./ && rmdir _site)
           git add .
           git commit -a -m 'Host site from merge ${{ github.head_ref }} → ${{ github.base_ref }}'
-          git push origin HEAD
+          git push origin HEAD:origin/test/master
