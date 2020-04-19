@@ -1,13 +1,5 @@
 name: Build and Host
-on:
-  pull_request:
-    branches: [develop]
-    types: [closed]
-    paths:
-      - '**.html'
-      - '**.css'
-      - '**.js'
-      - '**.hbs'
+on: [push]
 
 jobs:
   build_and_host:
