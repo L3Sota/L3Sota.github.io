@@ -24,9 +24,9 @@ jobs:
           git config --global --add core.excludesFile ~/.config/git/ignore
           git config --global --add user.name 'L3Sota'
           git config --global --add user.email 'l3sota@protonmail.com'
-          git fetch --no-tags --prune --depth=1 origin master
-          git checkout -b master -t origin/test/master
+          git fetch --no-tags --prune --depth=1 origin test/master
+          git checkout -b test/master -t origin/test/master
           git rm -r . || (mv -f _site/* ./ && rmdir _site)
           git add .
-          git commit -a -m 'Host site from merge ${{ github.head_ref }} → ${{ github.base_ref }}'
-          git push origin HEAD:origin/test/master
+          git commit -m 'Host site from merge ${{ github.head_ref }} → ${{ github.base_ref }}'
+          git push origin HEAD
