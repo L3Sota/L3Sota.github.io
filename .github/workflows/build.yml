@@ -46,4 +46,4 @@ jobs:
         run: git add . && git commit -m 'Host site from merge ${{ github.head_ref }} → ${{ github.base_ref }}'
       - name: Push to origin if commit succeeded
         if: steps.commit.outcome == 'success'
-        run: git push origin HEAD:origin/master
+        run: git push origin HEAD:master
