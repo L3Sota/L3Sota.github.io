@@ -4,6 +4,7 @@ on:
     branches: [develop]
     types: [closed]
     paths:
+      - '.eleventyignore'
       - '**.html'
       - '**.css'
       - '**.js'
