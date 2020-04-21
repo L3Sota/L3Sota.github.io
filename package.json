@@ -20,12 +20,14 @@
   "homepage": "https://github.com/L3Sota/L3Sota.github.io#readme",
   "devDependencies": {
     "@11ty/eleventy": "^0.10.0",
+    "acorn": ">=5.7.4",
     "husky": "^4.2.5",
-    "acorn": ">=5.7.4"
+    "precise-commits": "^1.0.2",
+    "prettier": "^2.0.4"
   },
   "husky": {
     "hooks": {
-      "pre-commit": "npx @11ty/eleventy --dryrun"
+      "pre-commit": "npx precise-commits && npx eleventy --dryrun"
     }
   }
 }
