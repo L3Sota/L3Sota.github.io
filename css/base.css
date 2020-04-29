@@ -1,0 +1,64 @@
+:root {
+  --solarized-base03: rgb(0, 43, 54);
+  --solarized-base02: rgb(7, 54, 66);
+  --solarized-base01: rgb(88, 110, 117);
+  --solarized-base00: rgb(101, 123, 131);
+  --solarized-base0: rgb(131, 148, 150);
+  --solarized-base1: rgb(147, 161, 161);
+  --solarized-base2: rgb(238, 232, 213);
+  --solarized-base3: rgb(253, 246, 227);
+  --solarized-yellow: rgb(181, 137, 0);
+  --solarized-orange: rgb(203, 75, 22);
+  --solarized-red: rgb(220, 50, 47);
+  --solarized-magenta: rgb(211, 54, 130);
+  --solarized-violet: rgb(108, 113, 196);
+  --solarized-blue: rgb(38, 139, 210);
+  --solarized-cyan: rgb(42, 161, 152);
+  --solarized-green: rgb(133, 153, 0);
+}
+
+body {
+  background-color: var(--solarized-base03);
+  color: var(--solarized-base0);
+  font-family: Verdana, Helvetica, Arial, "Hiragino Sans", "Sawarabi Gothic", "UD Digi Kyokasho", sans-serif;
+  font-size: 18px;
+  margin: 5rem;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Helvetica Neue", Helvetica, Arial, "Hiragino Sans", "UD Digi Kyokasho", sans-serif;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+strong,
+b,
+em,
+i {
+  color: var(--solarized-base1);
+}
+
+a {
+  color: var(--solarized-blue);
+}
+
+code {
+  color: var(--solarized-cyan)
+}
+
+footer {
+  background-color: var(--solarized-base3);
+  font-size: smaller;
+  margin: 0rem;
+  padding: 0.5em;
+  text-align: right;
+}
