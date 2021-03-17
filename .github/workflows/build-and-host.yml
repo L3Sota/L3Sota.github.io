@@ -1,0 +1,40 @@
+name: Build and Host
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build_and_host:
+    runs-on: ubuntu-latest
+    name: Build site and push to publish branch for hosting on Github Pages
+    timeout-minutes: 5
+    steps:
+      - name: Install hugo
+        run: |
+          snap install hugo --channel=extended
+      - uses: actions/checkout@v2
+        with:
+          submodules: true
+      - name: Reset publish to main
+        run: |
+          mkdir -p ~/.config/git
+          cat .gitignore >> ~/.config/git/ignore
+          git config --global --add core.excludesFile ~/.config/git/ignore
+          git config --global --add user.name github-actions
+          git config --global --add user.email github-actions@github.com
+          git fetch --no-tags --prune --depth=1 origin publish
+          git checkout publish
+          git reset --hard main
+      - name: Build site
+        continue-on-error: true
+        run: rm -r public && hugo
+      - name: Move newly built site to top level
+        run: mv -f public/* ./ && rmdir public
+      - name: Commit changes (can fail if no changes)
+        id: commit
+        continue-on-error: true
+        run: git add . && git commit -m 'Host site from merge ${{ github.head_ref }} → ${{ github.base_ref }}'
+      - name: Push to origin if commit succeeded
+        if: steps.commit.outcome == 'success'
+        run: git push -f origin HEAD:publish

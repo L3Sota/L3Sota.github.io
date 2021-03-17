@@ -1,0 +1,4 @@
+baseURL = "https://l3sota.github.io/"
+languageCode = "en-us,ja-jp"
+title = "L3Sota"
+theme = "smol"
