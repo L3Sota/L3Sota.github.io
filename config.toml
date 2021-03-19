@@ -1,4 +1,6 @@
 baseURL = "https://l3sota.github.io/"
+defaultContentLanguage = "en"
+hasCJKLanguage = true
 languageCode = "en-us,ja-jp"
 title = "L3Sota"
 theme = "smol"
@@ -6,6 +8,14 @@ theme = "smol"
 [params]
   subtitle = "Welcome to my infrequently updated website!"
   dateFmt = "2006-01-02T15:04:05Z"
+
+[languages]
+  [languages.en]
+    languageName = "English"
+    weight = 1
+  [languages.ja]
+    languageName = "日本語"
+    weight = 2
 
 [menu]
   [[menu.main]]
