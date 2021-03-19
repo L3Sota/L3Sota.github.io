@@ -1,7 +1,6 @@
 ---
 title: "Init"
-date: 2021-03-15T15:03:27+09:00
-draft: true
+date: 2021-03-15T06:03:27Z
 ---
 
 just setting up my hugo
