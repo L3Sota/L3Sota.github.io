@@ -1,7 +1,6 @@
 ---
-title: "Introducing Chia"
+title: "Introducing Chia (en,ja)"
 date: 2021-03-19T09:00:12Z
-draft: true
 ---
 
 I've been passively following the [Chia](https://www.chia.net) project since signing up for their newsletter in 2017, and am now more actively participating in the community now that mainnet is a couple hours away from launching. Although I haven't _really_ understood the soundness of Proof of Space + Proof of Time and the many implementation details meant to fend off attacks, I think the general approach of building on Bitcoin's strengths while covering its weaknesses is a robust one.

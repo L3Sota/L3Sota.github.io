@@ -1,7 +1,7 @@
 baseURL = "https://l3sota.github.io/"
 defaultContentLanguage = "en"
 hasCJKLanguage = true
-languageCode = "en-us,ja"
+languageCode = "en-us,ja-jp"
 title = "L3Sota"
 theme = "smol"
 
