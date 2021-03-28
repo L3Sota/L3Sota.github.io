@@ -3,7 +3,7 @@ title: "チア(XCH)の購入方法：前売り詐欺"
 date: 2021-03-28T01:18:50Z
 ---
 
-どうやらチア(XCH)の「前売り」なる行為が横行しているようですが、**全部詐欺**なのでご注意ください！（チア創業者の@bramcohenも[ツイート](https://twitter.com/bramcohen/status/1375958173576622083?s=21)してます。）
+どうやらチア(XCH)の「前売り」なる行為が横行しているようですが、**全部詐欺**なのでご注意ください！（チア創業者の@bramcohenも[ツイート](https://twitter.com/bramcohen/status/1375958173576622083)してます。）
 
 ここではサクッとチアのビジネス白書から要点を紹介し、具体的に何に気を付ければいいかを説明しようと思います。白書は[https://www.chia.net/assets/Chia-Business-Whitepaper-2021-02-09-v1.0.pdf](https://www.chia.net/assets/Chia-Business-Whitepaper-2021-02-09-v1.0.pdf)からアクセスできます（ただし英文）。
 

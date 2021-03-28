@@ -3,7 +3,7 @@ title: "How to buy Chia (XCH): Pre-sale Scams"
 date: 2021-03-28T01:18:49Z
 ---
 
-Quick post to bring attention to "pre-sale" Chia (XCH). tl;dr **They're all scams**! ([Relevant Tweet](https://twitter.com/bramcohen/status/1375958173576622083?s=21) from @bramcohen)
+Quick post to bring attention to "pre-sale" Chia (XCH). tl;dr **They're all scams**! ([Relevant Tweet](https://twitter.com/bramcohen/status/1375958173576622083) from @bramcohen)
 
 Here's some justification. The latest business whitepaper is available at [https://www.chia.net/assets/Chia-Business-Whitepaper-2021-02-09-v1.0.pdf](https://www.chia.net/assets/Chia-Business-Whitepaper-2021-02-09-v1.0.pdf), and all my claims are cited from there.
 
