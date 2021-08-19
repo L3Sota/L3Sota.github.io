@@ -1,5 +1,5 @@
 ---
-title: "How to buy Chia (XCH): Pre-sale Scams"
+title: "How to buy Chia (XCH): Pre-sale Scams (en,ja)"
 date: 2021-03-28T01:18:49Z
 ---
 
