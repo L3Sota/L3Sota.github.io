@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en-us,ja-jp">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<style type=text/css>body{font-family:monospace;}</style>
+	<title>Chia Primer: Differences vs. Bitcoin (en,ja)</title>
+	
+	
+	<link rel="stylesheet" href="/css/style.css">
+	
+	
+</head>
+<body>
+	<header>
+	============<br>
+	== <a href="https://l3sota.github.io/">L3Sota</a> ==<br>
+	============
+	<div style="float: right;">Welcome to my infrequently updated website!</div><br>
+	<p>
+	<nav>
+			<a href="/"><b>Start</b></a>.
+			
+			
+			<a href="/posts"><b>Posts</b></a>.
+			
+			<a href="/about"><b>About</b></a>.
+			
+	</nav>
+	</p>
+	
+</header>
+
+	
+
+<nav class="LangNav">
+  
+  <a href="https://l3sota.github.io/ja/posts/chia-explanation/">日本語</a>
+  
+</nav>
+
+
+<main>
+  <article>
+    <h1>Chia Primer: Differences vs. Bitcoin (en,ja)</h1>
+    <b><time>2021-08-10T12:44:49Z</time></b>
+    
+
+    <div>
+      <h1 id="chia-vs-bitcoin">Chia vs. Bitcoin</h1>
+<p>I wrote up an explanation of Chia and its benefits vs. Bitcoin in Japanese. There are better resources out there in English regarding the various comparisons, so I&rsquo;ll be brief in this English version.</p>
+<h2 id="power-electricity-consumption">Power (Electricity) Consumption</h2>
+<p>There are a lot of English articles on the topic of Bitcoin&rsquo;s power consumption (I like <a href="https://psci.princeton.edu/tips/2021/2/27/is-cryptomining-harming-the-environment">this one from Princeton</a>, and <a href="https://cbeci.org/">Cambridge has a fun interactive tool</a>). If you&rsquo;d like to learn more about how Chia&rsquo;s power consumption is, the <a href="https://chiapower.org/">Chia Power</a> website is a great technical source. If you&rsquo;d rather not read all of it, here&rsquo;s the tl;dr (and possibly a better overview of how Chia works, as a pre-read):</p>
+<ul>
+<li>Chia&rsquo;s plotter, when run on your computer, calculates large batches of numbers that meet mathematical properties to be considered a proof against specific challenges. These lookup tables are called &ldquo;plot(s)&rdquo; or plot files, and take up a large amount of space. They also require a lot of electricity, since the mathematical properties involve a lot of hashing (yes, the same hashing as Bitcoin, though the specific hash functions are different).</li>
+<li>The plotter runs <em>once</em> for each plot file. Once your hard drive&rsquo;s filled up, that&rsquo;s it. No more plotting.</li>
+<li>Chia then switches to farming, which is where the Chia application connects to other peers on the network (like Bitcoin), syncs its blockchain to the tip (like Bitcoin), and tries to create blocks (like Bitcoin). The difference is that Chia&rsquo;s farming process is a simple call-and-response format, where a new challenge based on the tip of the blockchain is created by timelords (which I will gloss over for now), and your Chia application just checks if any of the plots you&rsquo;ve created have a proof matching that challenge. A simple lookup! If you do, you create a new block and broadcast it, but if you don&rsquo;t, you wait for the next challenge. There&rsquo;s no furious race to hash things, and your application&rsquo;s response to the challenge can take upwards of 30 seconds, an eternity by computer standards!</li>
+<li>Therefore, the only significant power consumption is during however long it takes for you to create all of your plots; after that, the only power Chia uses is to look through your hard drives and make network requests. (Keeping hard drives spinning is not totally insignificant, but the subtleties therein are described at Chia Power in detail. Suffice it to say that it&rsquo;s way less than Bitcoin or any other Proof of Work coin.)</li>
+</ul>
+<h2 id="centralization">Centralization</h2>
+<p>The other important point that doesn&rsquo;t get as much attention as the power consumption problem is the centralization problem. Bitcoin suffers from economies of scale; that is, it is cheaper to buy electricity in bulk (industrial power contracts), and cheaper to design and manufacture ASICs in bulk. This means that large operations not only have an advantage in obtaining network share (hash rate), but also have an advantage in <em>running costs</em> due to electricity price differences. ASICs are also far more power efficient than CPUs or GPUs (<a href="https://blog.bitmex.com/battle-for-asic-supremacy/">article on ASIC efficiency</a>; CPUs and GPUs are, I believe, above 5 kW/TH, going beyond the top of the first graph), which exacerbates this imbalance.</p>
+<p>How does Chia perform in these respects? Well, first things first, since its power consumption cost is up-front instead of continuous, the price difference of electricity doesn&rsquo;t make nearly as big of a difference. The other big cost is hardware: namely, hard drives. In this battle, we have an interesting dynamic:</p>
+<ul>
+<li>
+<p>Your average &ldquo;pleb&rdquo; farmer who isn&rsquo;t really interested in investing in Chia actually has the <em>highest efficiency</em>; they are gaining value out of what used to be empty hard drive space on hard drives <em>they already own</em>, a waste of resources and a sunk cost. Maybe they buy a backup drive or two, and until they get filled up with family photos or music libraries, they put some plots on it. The running electricity cost is negligible since the farmer&rsquo;s already using the computer and gaining utility from that power, and if they don&rsquo;t want to keep their computer on all night, they have the choice to shut it down. (Some farmers are using small devices like the Raspberry Pi or Rock Pi as their always-on farmer to save even more on running costs.) The difference between Chia and Bitcoin is that <strong>this scale of farmer isn&rsquo;t &ldquo;losing out&rdquo; significantly</strong> from not having some kind of specialized storage hardware, or from cheaper electricity; they aren&rsquo;t at any inherent disadvantage due to their small size, especially since they aren&rsquo;t actively investing in Chia. For all they care, it&rsquo;s free internet money for investing their empty space!</p>
+</li>
+<li>
+<p>Large-scale farmers may find better deals on hard drives in bulk, and may be able to get industrial power contracts, but their power draw won&rsquo;t be anything like Bitcoin. What will affect the decisions of such large-scale operations is strictly the profitability of bringing new space onto the network, and the main bottleneck is actually going to be <em>plotting</em> fast enough to utilize the new space. Although plotting is a trivially parallelizable operation (just run multiple plotters), there is a difficult balancing act between more plotters and keeping your plotters utilized; if you don&rsquo;t have any more empty space to plot, then your plotters are no longer useful (at least, not for Chia purposes). The natural extension is to start plotting for others as a paid service or pivoting your plotters to some kind of datacenter use, at which point your growth as a farmer has ended. The network growth has a large effect here: if you start with <code>x</code> space on a network that grows from <code>N</code> total space to <code>kN</code> total space, your share will go from <code>x/N</code> to <code>x/kN</code>, a <code>1/k</code> multiplicative reduction. This <em>multiplicative reduction</em> combined with <em>linear storage increases</em> results in highly diminishing returns for large farmers. That is, a 1 plot farmer can respond to a network doubling by finding the space to create 1 more plot to maintain their network share, but a large farmer with 1000 plots must now respond by creating approximately 1000 more plots. Despite great deals on hardware, cheap electricity, and powerful plotters running 24/7, the large farmer will likely be overwhelmed by the diminishing returns from netspace increase brought on by netspace growth.</p>
+</li>
+</ul>
+<p>As a result, the smallest of farmers have the least to lose, and the user growth should result in higher decentralization than Bitcoin.</p>
+<h2 id="storage-media-resource-consumption">Storage Media Resource Consumption</h2>
+<p>It is important to understand that, although I personally see the trade-off as a huge win for Chia, the concern of <em>new storage space being initialized solely for Chia farming</em> is a somewhat valid one. Bitcoin mining turned into an ASIC development and electricity consuming machine; is there not a similar case to be made for a storage space arms race, which depletes electronics materials? Well, in my humble opinion, I&rsquo;d say that advances in data storage, even if explicitly with the goal of farming more Chia in mind, would simply improve the outlook of the storage industry at large, and selling that new, advanced storage would actually be much more profitable than hoarding it to farm Chia. This is largely due to the fact, explained above, that large-scale farmers always need to consider their profitability per unit of storage space acquired, plotted, and brought online, combined with the fact that improved storage is almost always a general-purpose solution: it&rsquo;s hard to find storage media that is solely useful for storing a certain type of data and not another. (Sequential storage, like magnetic tapes, are a prominent exception.)</p>
+
+    </div>
+  </article>
+</main>
+<aside>
+	<div>
+		<div>
+			<h3>LATEST POSTS</h3>
+		</div>
+		<div>
+			<ul>
+				
+				<li><a href="/posts/chia-explanation/">Chia Primer: Differences vs. Bitcoin (en,ja)</a></li>
+				
+				<li><a href="/posts/chia-scams/">How to buy Chia (XCH): Pre-sale Scams (en,ja)</a></li>
+				
+				<li><a href="/posts/introducing-chia/">Introducing Chia (en,ja)</a></li>
+				
+				<li><a href="/posts/init/">Init</a></li>
+				
+			</ul>
+		</div>
+	</div>
+</aside>
+
+
+	<footer>
+	<p>&copy; 2021 <a href="https://l3sota.github.io/"><b>L3Sota</b></a>.
+	<a href="https://github.com/L3Sota"><b>Github</b></a>.
+	<a href="https://twitter.com/L3Sota"><b>Twitter</b></a>.
+	<a href="https://keybase.io/l3sota"><b>Keybase</b></a>.
+	</p>
+</footer>
+
+</body>
+</html>
